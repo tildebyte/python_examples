@@ -1,0 +1,52 @@
+# Random.org API:
+API URL: https://api.random.org/json-rpc/1/invoke
+Must use: HHTPS; POST
+Must have API key; get one here: https://api.random.org/json-rpc/1 "Get a Beta Key" button.
+Return codes: successful, HTTP 200; client error, HTTP 400 (Bad Request)
+  or 404 (Method Not Found); server error, HTTP 500
+
+Random.org API JSON request:
+{
+    "jsonrpc": "2.0",
+    "method": "generateIntegers",
+    "params": {
+        "apiKey": "00000000-0000-0000-0000-000000000000",
+        "n": 30,
+        "min": 1,
+        "max": 6,
+        "replacement": true,
+        "base": 10
+    },
+    "id": RANDOM_INT_HERE
+}
+
+Random.org API JSON return (note missing "error" field):
+{
+    "jsonrpc": "2.0",
+    "result": {
+        "random": {
+            "data": [
+                5,
+              *snip*
+                3
+            ],
+            "completionTime": "2015-03-02 21:04:34Z"
+        },
+        "bitsUsed": 33,
+        "bitsLeft": 932908,
+        "requestsLeft": 197829,
+        "advisoryDelay": 0
+    },
+    "id": RANDOM_INT_HERE
+}
+
+Random.org API JSON error return:
+{
+    "jsonrpc": "2.0",
+    "error": {
+        "code": 12,
+        "message": "Error message",
+        "data": [ 17, 3 ]
+    },
+    "id": RANDOM_INT_HERE
+}
